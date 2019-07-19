@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'vf-database-test',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatabaseTestComponent implements OnInit {
 
-  constructor() { }
+  public form: FormGroup;
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      username: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required])],
+      password: ['', Validators.compose([Validators.required])],
+    });
   }
 
 }
