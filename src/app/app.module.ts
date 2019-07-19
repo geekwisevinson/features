@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './features/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DatabaseTestComponent } from './features/database-test/database-test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    DatabaseTestComponent
   ],
   imports: [
     BrowserModule,
