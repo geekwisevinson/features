@@ -5,14 +5,34 @@
   </p>
 
   <div class="part">
-    <h3>Expressions</h3>
+    <h3>Interpolation and Template Expressions</h3>
     This code
     <div>
       <code>
         {{"{{ 2 + 3 \}\}"}}
       </code>
     </div>
-    will result in "{{ 2 + 3 }}" written to the screen in place of itself
+    will result in "{{ 2 + 3 }}" written to the screen in place of itself.
+    <p>
+      You can also display variables from the controller
+    </p>
+    <div>
+      The code
+      <div>
+        <code>
+          {{"{{ myVariable \}\}"}}
+        </code>
+      </div>
+      Will result in displaying a primitive as a string on the template.
+      <div>
+        Note* if you want to display a complex type you have to stringify it first or add the json pipe
+      </div>
+      <div>
+        <code>
+          {{"{{ myVariable | json \}\}"}}
+        </code>
+      </div>
+    </div>
   </div>
 
 
