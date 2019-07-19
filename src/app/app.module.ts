@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './features/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatabaseTestComponent } from './features/database-test/database-test.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,8 @@ import { DatabaseTestComponent } from './features/database-test/database-test.co
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
