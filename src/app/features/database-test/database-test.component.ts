@@ -19,4 +19,9 @@ export class DatabaseTestComponent implements OnInit {
     });
   }
 
+  public onSubmit() {
+    const formValue = this.form.value;
+    console.log(formValue);
+  }
+
 }
