@@ -1,3 +1,15 @@
-<p>
-  database-test works!
-</p>
+<div>
+  <h3>Database test</h3>
+  <form [formGroup]="form">
+    <div>
+      <input type="text" formControlName="username" placeholder="username">
+    </div>
+    <div>
+      <input type="text" formControlName="email" placeholder="email">
+    </div>
+    <div>
+      <input type="text" formControlName="password" placeholder="password">
+    </div>
+  </form>
+  <button> submit </button>
+</div>
