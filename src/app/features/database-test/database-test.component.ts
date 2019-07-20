@@ -28,4 +28,10 @@ export class DatabaseTestComponent implements OnInit {
     });
   }
 
+  public onGet() {
+    this.apiService.get('posts/items.json').subscribe( res => {
+      console.log('res', res);
+    });
+  }
+
 }
