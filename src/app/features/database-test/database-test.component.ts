@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'vf-database-test',
@@ -9,7 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class DatabaseTestComponent implements OnInit {
 
   public form: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private apiService: ApiService) { }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -22,6 +23,9 @@ export class DatabaseTestComponent implements OnInit {
   public onSubmit() {
     const formValue = this.form.value;
     console.log(formValue);
+    this.apiService.post('posts/items.json', formValue).subscribe( res => {
+      console.log('res', res);
+    });
   }
 
 }
