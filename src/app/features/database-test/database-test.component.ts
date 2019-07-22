@@ -9,6 +9,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class DatabaseTestComponent implements OnInit {
 
+  public path: string;
   public form: FormGroup;
   constructor(private fb: FormBuilder, private apiService: ApiService) { }
 
@@ -23,13 +24,16 @@ export class DatabaseTestComponent implements OnInit {
   public onSubmit() {
     const formValue = this.form.value;
     console.log(formValue);
-    this.apiService.post('posts/items.json', formValue).subscribe( res => {
-      console.log('res', res);
-    });
+    if (this.path) {
+      this.apiService.post( 'test/'  + this.path + '.json', formValue).subscribe( res => {
+        console.log('res', res);
+      });
+    }
+
   }
 
   public onGet() {
-    this.apiService.get('posts/items.json').subscribe( res => {
+    this.apiService.get('test/'  + this.path + '.json').subscribe( res => {
       console.log('res', res);
     });
   }
