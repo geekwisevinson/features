@@ -17,3 +17,12 @@
   <button (click)="onSubmit()"> submit </button>
   <button (click)="onGet()"> get </button>
 </div>
+
+<div>
+  <ng-container *ngFor="let item of array">
+    <div @fade>
+      {{item | json}}
+    </div>
+
+  </ng-container>
+</div>

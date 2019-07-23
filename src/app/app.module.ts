@@ -7,6 +7,7 @@ import { NavComponent } from './features/nav/nav.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatabaseTestComponent } from './features/database-test/database-test.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
