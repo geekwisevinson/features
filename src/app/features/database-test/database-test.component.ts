@@ -22,8 +22,9 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class DatabaseTestComponent implements OnInit {
 
   public array = [];
-  public path: string;
+  public path: string = 'option';
   public form: FormGroup;
+  public selectedItem = null;
   constructor(private fb: FormBuilder, private apiService: ApiService) { }
 
   ngOnInit() {
@@ -32,6 +33,7 @@ export class DatabaseTestComponent implements OnInit {
       email: ['', Validators.compose([Validators.required])],
       password: ['', Validators.compose([Validators.required])],
     });
+    this.onGet();
   }
 
   public onSubmit() {
@@ -41,7 +43,7 @@ export class DatabaseTestComponent implements OnInit {
       this.apiService.post( 'test/'  + this.path + '.json', formValue).subscribe( res => {
         console.log('res', res);
 
-
+        this.onGet();
       });
     }
 
@@ -52,12 +54,35 @@ export class DatabaseTestComponent implements OnInit {
     this.apiService.get('test/'  + this.path + '.json').subscribe( res => {
       console.log('res', res);
       if (res) {
-        this.array = Object.values(res);
+        this.array = Object.entries(res).map( i => ({ ...i[1], id: i[0] } ));
         console.log('this.array', this.array);
       }
 
     }, err => {
       console.log('err', err);
+    });
+  }
+
+  public onDelete(id) {
+    this.apiService.delete('test/'  + this.path + '/' + id + '.json').subscribe( res => {
+      console.log(res);
+      this.onGet();
+    });
+  }
+
+  public onSelect(id) {
+    this.apiService.get('test/'  + this.path + '/' + id + '.json').subscribe( res => {
+      this.selectedItem = {...res, id};
+      console.log('selected', res);
+    });
+  }
+
+  public onUpdate(id) {
+    const formValue = this.form.value;
+    this.apiService.put('test/'  + this.path + '/' + id + '.json', formValue ).subscribe( res => {
+      this.selectedItem = {...res, id};
+      console.log('selected', res);
+      this.onGet();
     });
   }
 

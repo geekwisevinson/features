@@ -20,4 +20,10 @@ export class ApiService {
   public post(url: string, body: any) {
     return this.http.post(this.baseUrl() + url, body);
   }
+  public delete(url: string) {
+    return this.http.delete(this.baseUrl() + url);
+  }
+  public put(url: string, body: any) {
+    return this.http.put(this.baseUrl() + url, body);
+  }
 }

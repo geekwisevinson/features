@@ -21,8 +21,12 @@
 <div>
   <ng-container *ngFor="let item of array">
     <div @fade>
-      {{item | json}}
+      {{ item | json }}
+      <button (click)="onDelete(item.id)">delete</button> <button (click)="onSelect(item.id)">Select</button>
     </div>
 
   </ng-container>
+</div>
+<div>
+  {{selectedItem | json}} <button *ngIf="selectedItem"  (click)="onUpdate(selectedItem.id)">Update</button>
 </div>
